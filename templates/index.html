@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derma & Bare AI | Smart Skincare & Haircare Advisor</title>
+    <meta name="description" content="AI-powered skincare and haircare consultant for The Derma Co and Bare Anatomy product catalog. Get personalized routines, ingredient breakdowns, and recommendations.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="dark-theme">
+
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-identity">
+                <div class="logo-icon-wrapper">
+                    <i data-lucide="sparkles" class="brand-sparkle"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Derma <span class="accent-amp">&amp;</span> Bare <span class="ai-badge">AI 3.6</span></h1>
+                    <p class="subtitle">Intelligent Skincare &amp; Haircare Consultant</p>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <nav class="nav-tabs">
+                <button class="nav-btn active" data-tab="chat-tab">
+                    <i data-lucide="bot"></i>
+                    <span>AI Assistant</span>
+                </button>
+                <button class="nav-btn" data-tab="catalog-tab">
+                    <i data-lucide="grid"></i>
+                    <span>Catalog Explorer</span>
+                    <span class="count-pill" id="total-catalog-count">60+</span>
+                </button>
+                <button class="nav-btn" data-tab="quiz-tab">
+                    <i data-lucide="wand-2"></i>
+                    <span>Routine Quiz</span>
+                </button>
+            </nav>
+
+            <div class="header-actions">
+                <div class="status-indicator" title="Connected to Gemini 3.6 Flash AI">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Gemini 3.6 Active</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- TAB 1: AI Chatbot Advisor -->
+        <section id="chat-tab" class="tab-pane active">
+            <div class="chat-layout">
+                <!-- Chat Hero Banner & Quick Prompts Side Column -->
+                <div class="chat-sidebar">
+                    <div class="sidebar-hero-card">
+                        <img src="{{ url_for('static', filename='images/hero.png') }}" alt="Derma & Bare AI Advisor" class="sidebar-hero-img">
+                        <div class="hero-card-overlay">
+                            <h3>Derma &amp; Bare AI</h3>
+                            <p>Powered by active ingredients &amp; botanical science from <strong>The Derma Co</strong> &amp; <strong>Bare Anatomy</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-prompts-section">
+                        <h4><i data-lucide="zap"></i> Recommended Quick Prompts</h4>
+                        <div class="prompt-chips">
+                            <button class="prompt-chip" data-prompt="What is the best serum routine for acne and stubborn dark spots?">
+                                🧪 Acne &amp; Dark Spots Routine
+                            </button>
+                            <button class="prompt-chip" data-prompt="Suggest Bare Anatomy products for severe hair fall and scalp growth.">
+                                🌿 Hair Fall &amp; Scalp Growth
+                            </button>
+                            <button class="prompt-chip" data-prompt="Show me all sunscreens under ₹600 with prices and ingredients.">
+                                ☀️ Sunscreens under ₹600
+                            </button>
+                            <button class="prompt-chip" data-prompt="Explain the difference between Vitamin C 10% and Niacinamide serums.">
+                                🔬 Vitamin C vs Niacinamide
+                            </button>
+                            <button class="prompt-chip" data-prompt="Recommend a complete hydrated haircare routine for frizzy wavy hair.">
+                                💧 Frizz Repair &amp; Smoothness
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Brand Highlights -->
+                    <div class="brand-pills-card">
+                        <div class="brand-pill derma-co">
+                            <i data-lucide="flask-conical"></i>
+                            <div>
+                                <strong>The Derma Co</strong>
+                                <span>Active Dermatological Science</span>
+                            </div>
+                        </div>
+                        <div class="brand-pill bare-anatomy">
+                            <i data-lucide="flower-2"></i>
+                            <div>
+                                <strong>Bare Anatomy</strong>
+                                <span>Botanical &amp; Precision Haircare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Chat Workspace -->
+                <div class="chat-workspace">
+                    <!-- Chat Header -->
+                    <div class="chat-header-bar">
+                        <div class="active-session-info">
+                            <div class="chat-avatar">
+                                <i data-lucide="sparkles"></i>
+                            </div>
+                            <div>
+                                <h2>AI Personal Consultant</h2>
+                                <p>Ask about skin types, ingredients, prices, routines, or product recommendations</p>
+                            </div>
+                        </div>
+                        <button class="clear-chat-btn" id="clear-chat-btn" title="Clear Chat History">
+                            <i data-lucide="trash-2"></i> Clear
+                        </button>
+                    </div>
+
+                    <!-- Chat Messages Stream -->
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Bot Welcome Message -->
+                        <div class="message-row bot-row">
+                            <div class="msg-avatar">
+                                <i data-lucide="sparkles"></i>
+                            </div>
+                            <div class="msg-content">
+                                <div class="msg-header">
+                                    <span class="sender-name">Derma &amp; Bare AI</span>
+                                    <span class="msg-time">Just now</span>
+                                </div>
+                                <div class="msg-body">
+                                    <p>Hello! 👋 I am your official <strong>Derma &amp; Bare AI Consultant</strong>.</p>
+                                    <p>I am trained directly on the catalog of <strong>The Derma Co</strong> (Skincare active ingredients) and <strong>Bare Anatomy</strong> (Advanced haircare solutions).</p>
+                                    <p>How can I assist your skin or hair routine today? You can ask me:</p>
+                                    <ul>
+                                        <li>"Recommend a routine for oily, acne-prone skin with prices"</li>
+                                        <li>"What are the ingredients in Bare Anatomy Ultra Smoothing Shampoo?"</li>
+                                        <li>"Which sunscreens offer SPF 50 PA++++ without white cast?"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="typing-indicator-row hidden" id="typing-indicator">
+                        <div class="msg-avatar">
+                            <i data-lucide="sparkles"></i>
+                        </div>
+                        <div class="typing-box">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <span>Analyzing Derma &amp; Bare catalog...</span>
+                        </div>
+                    </div>
+
+                    <!-- Input Bar -->
+                    <div class="chat-input-container">
+                        <form id="chat-form" class="chat-form">
+                            <textarea id="chat-input" placeholder="Ask about acne, hair fall, ingredients, product prices, routines..." rows="1"></textarea>
+                            <button type="submit" class="send-btn" id="send-btn" title="Send message">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </form>
+                        <div class="input-footer">
+                            <span><i data-lucide="shield-check"></i> Trained on 60+ verified Derma Co &amp; Bare Anatomy products</span>
+                            <span>Shift + Enter for new line</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TAB 2: Product Catalog Explorer -->
+        <section id="catalog-tab" class="tab-pane">
+            <div class="catalog-header-bar">
+                <div class="catalog-title">
+                    <h2>Derma &amp; Bare Product Catalog</h2>
+                    <p>Explore all 60+ science-backed products with prices, active ingredients, and concern matches.</p>
+                </div>
+
+                <!-- Brand Filter Switches -->
+                <div class="brand-switch-group">
+                    <button class="brand-filter-btn active" data-brand="all">All Brands</button>
+                    <button class="brand-filter-btn derma-btn" data-brand="The Derma Co">The Derma Co 🧪</button>
+                    <button class="brand-filter-btn bare-btn" data-brand="Bare Anatomy">Bare Anatomy 🌸</button>
+                </div>
+            </div>
+
+            <!-- Filters & Search Toolbar -->
+            <div class="catalog-toolbar">
+                <!-- Search Box -->
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="catalog-search" placeholder="Search by product name, ingredient (e.g. Salicylic, Niacinamide, Redensyl)...">
+                </div>
+
+                <!-- Filters -->
+                <div class="toolbar-filters">
+                    <!-- Category Dropdown -->
+                    <div class="filter-group">
+                        <label><i data-lucide="layers"></i> Category:</label>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="Serums">Face Serums</option>
+                            <option value="Face Wash">Face Washes</option>
+                            <option value="Moisturizers">Moisturizers</option>
+                            <option value="Sunscreens & Hair Care">Sunscreens</option>
+                            <option value="Shampoos">Shampoos</option>
+                            <option value="Conditioners & Oils">Conditioners &amp; Oils</option>
+                            <option value="Hair Serums">Hair Serums</option>
+                            <option value="Hair Masks">Hair Masks</option>
+                            <option value="Leave-In & Styling">Leave-In &amp; Styling</option>
+                        </select>
+                    </div>
+
+                    <!-- Target Type Dropdown -->
+                    <div class="filter-group">
+                        <label><i data-lucide="sparkles"></i> Target:</label>
+                        <select id="target-filter">
+                            <option value="all">All (Skin &amp; Hair)</option>
+                            <option value="Skincare">Skincare Only</option>
+                            <option value="Haircare">Haircare Only</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group price-filter">
+                        <label><i data-lucide="indian-rupee"></i> Max Price: <span id="price-val">₹1500</span></label>
+                        <input type="range" id="price-range" min="200" max="1500" step="50" value="1500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catalog Results Stats -->
+            <div class="catalog-stats-row">
+                <span id="results-count-text">Showing 60 products</span>
+                <div class="active-tag-pills" id="active-tags"></div>
+            </div>
+
+            <!-- Catalog Grid Container -->
+            <div class="products-grid" id="products-grid">
+                <!-- Dynamic cards populated via JS -->
+            </div>
+        </section>
+
+
+        <!-- TAB 3: Diagnostic Routine Builder Quiz -->
+        <section id="quiz-tab" class="tab-pane">
+            <div class="quiz-container">
+                <div class="quiz-hero">
+                    <div class="quiz-badge"><i data-lucide="sparkles"></i> Smart Routine Engine</div>
+                    <h2>Personalized Routine Diagnostic</h2>
+                    <p>Answer 3 quick questions to generate a custom routine using The Derma Co &amp; Bare Anatomy products.</p>
+                </div>
+
+                <div class="quiz-card">
+                    <!-- Step 1: Care Focus -->
+                    <div class="quiz-step active" id="quiz-step-1">
+                        <h3>Step 1: What is your primary care focus?</h3>
+                        <div class="option-cards-grid">
+                            <div class="quiz-option-card active" data-step="1" data-val="skincare">
+                                <div class="opt-icon derma-icon"><i data-lucide="flask-conical"></i></div>
+                                <h4>Skincare Routine</h4>
+                                <p>Target acne, dark spots, pigmentation, oil control, dryness &amp; glowing skin.</p>
+                            </div>
+                            <div class="quiz-option-card" data-step="1" data-val="haircare">
+                                <div class="opt-icon bare-icon"><i data-lucide="flower-2"></i></div>
+                                <h4>Haircare Routine</h4>
+                                <p>Target hair fall, dandruff, scalp nourishment, frizz control &amp; hair growth.</p>
+                            </div>
+                            <div class="quiz-option-card" data-step="1" data-val="both">
+                                <div class="opt-icon combined-icon"><i data-lucide="sparkles"></i></div>
+                                <h4>Full Beauty Routine</h4>
+                                <p>Combine both Skincare &amp; Haircare into a holistic daily routine.</p>
+                            </div>
+                        </div>
+                        <div class="quiz-actions">
+                            <button class="quiz-next-btn" onclick="nextQuizStep(2)">Continue to Concerns <i data-lucide="arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Concerns Selection -->
+                    <div class="quiz-step hidden" id="quiz-step-2">
+                        <h3>Step 2: Select your main concern(s)</h3>
+                        <p class="quiz-subtitle">Select all that apply to you:</p>
+
+                        <div class="concerns-selection-grid" id="concerns-grid">
+                            <!-- Populated dynamically based on care focus -->
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button class="quiz-prev-btn" onclick="nextQuizStep(1)"><i data-lucide="arrow-left"></i> Back</button>
+                            <button class="quiz-next-btn" onclick="nextQuizStep(3)">Continue to Budget <i data-lucide="arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Budget Preference -->
+                    <div class="quiz-step hidden" id="quiz-step-3">
+                        <h3>Step 3: What is your maximum budget preference?</h3>
+                        
+                        <div class="budget-options-grid">
+                            <div class="budget-card active" data-budget="800">
+                                <h4>Budget-Friendly</h4>
+                                <p>Under ₹800</p>
+                            </div>
+                            <div class="budget-card" data-budget="1500">
+                                <h4>Recommended Routine</h4>
+                                <p>Under ₹1,500</p>
+                            </div>
+                            <div class="budget-card" data-budget="2500">
+                                <h4>Complete Deluxe Set</h4>
+                                <p>Under ₹2,500</p>
+                            </div>
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button class="quiz-prev-btn" onclick="nextQuizStep(2)"><i data-lucide="arrow-left"></i> Back</button>
+                            <button class="quiz-submit-btn" id="generate-routine-btn">
+                                <i data-lucide="wand-2"></i> Generate My Custom Routine
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Results View -->
+                    <div class="quiz-step hidden" id="quiz-results">
+                        <div class="results-header">
+                            <i data-lucide="check-circle-2" class="success-icon"></i>
+                            <h3>Your Custom Derma &amp; Bare Routine</h3>
+                            <p>Handpicked active formulations matching your profile:</p>
+                        </div>
+
+                        <div class="routine-results-grid" id="routine-results-grid">
+                            <!-- Dynamically populated -->
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button class="quiz-prev-btn" onclick="resetQuiz()"><i data-lucide="rotate-ccw"></i> Start Over</button>
+                            <button class="quiz-next-btn" id="ask-ai-routine-btn">
+                                <i data-lucide="bot"></i> Ask AI Consultant About This Routine
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i data-lucide="sparkles"></i> Derma &amp; Bare AI
+                </div>
+                <p>Trained on official product data for The Derma Co &amp; Bare Anatomy.</p>
+            </div>
+            <div class="footer-stats">
+                <div class="stat-item">
+                    <strong>60+</strong>
+                    <span>Verified Products</span>
+                </div>
+                <div class="stat-item">
+                    <strong>2</strong>
+                    <span>Premier Brands</span>
+                </div>
+                <div class="stat-item">
+                    <strong>100%</strong>
+                    <span>Science-Backed Actives</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

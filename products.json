@@ -1,0 +1,984 @@
+[
+  {
+    "id": 1,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "10% Vitamin C Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "10% Vitamin C, 5% Niacinamide, Hyaluronic Acid, Ferulic Acid",
+    "price": 545,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 2,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "10% Niacinamide Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "10% Niacinamide, 2% Zinc PCA",
+    "price": 515,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 3,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "2% Salicylic Acid Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "2% Salicylic Acid, Witch Hazel, Willow Bark",
+    "price": 439,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 4,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "5% Niacinamide Daily Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "5% Niacinamide, Alpha Arbutin, Multivitamin",
+    "price": 439,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 5,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "Sali-Cinamide Anti-Acne Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "2% Salicylic Acid, 5% Niacinamide",
+    "price": 515,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 6,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "Pore Minimizing Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "4% Niacinamide, 5% PHA, p-REFINYL®",
+    "price": 515,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 7,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "15% Vitamin C Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "15% Vitamin C",
+    "price": 671,
+    "currency": "INR",
+    "concerns": [
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 8,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "0.3% Retinol Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "0.3% Retinol",
+    "price": 671,
+    "currency": "INR",
+    "concerns": [
+      "Exfoliation & Anti-Aging"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 9,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "30% AHA + 2% BHA Peeling Solution – 30ml",
+    "size": "30ml",
+    "ingredients": "10% Glycolic Acid, 10% Lactic Acid, Salicylic Acid",
+    "price": 515,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Exfoliation & Anti-Aging"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 10,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "2% Kojic Acid Face Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "2% Kojic Acid, 1% Alpha Arbutin, Niacinamide",
+    "price": 439,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 11,
+    "brand": "The Derma Co",
+    "category": "Serums",
+    "name": "1% Kojic + Arbutin Night Repair Serum-Gel – 50g",
+    "size": "50g",
+    "ingredients": "1% Kojic Acid, Alpha Arbutin",
+    "price": 515,
+    "currency": "INR",
+    "concerns": [
+      "Damage Repair & Strengthening",
+      "Oil & Pore Control",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 12,
+    "brand": "The Derma Co",
+    "category": "Sunscreens & Hair Care",
+    "name": "1% Hyaluronic Sunscreen Aqua Gel – 50g",
+    "size": "50g",
+    "ingredients": "Hyaluronic Acid, Vitamin E, Titanium Dioxide — SPF 50, PA++++",
+    "price": 399,
+    "currency": "INR",
+    "concerns": [
+      "Sun Protection",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 13,
+    "brand": "The Derma Co",
+    "category": "Sunscreens & Hair Care",
+    "name": "1% Hyaluronic Sunscreen Aqua Gel – 80g",
+    "size": "80g",
+    "ingredients": "Hyaluronic Acid, Vitamin E, Titanium Dioxide — SPF 50, PA++++",
+    "price": 487,
+    "currency": "INR",
+    "concerns": [
+      "Sun Protection",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 14,
+    "brand": "The Derma Co",
+    "category": "Sunscreens & Hair Care",
+    "name": "1% Hyaluronic Sunscreen Oil-Free Matte Gel – 50g",
+    "size": "50g",
+    "ingredients": "1% Hyaluronic Acid — SPF 50, PA++++",
+    "price": 399,
+    "currency": "INR",
+    "concerns": [
+      "Sun Protection",
+      "Dryness & Hydration",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 15,
+    "brand": "The Derma Co",
+    "category": "Sunscreens & Hair Care",
+    "name": "Triple Actives Anti-Dandruff Shampoo – 200ml",
+    "size": "200ml",
+    "ingredients": "3-Active anti-dandruff complex",
+    "price": 374,
+    "currency": "INR",
+    "concerns": [
+      "Sun Protection",
+      "Dandruff & Scalp Care"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 16,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "2% Sali-Cinamide Anti-Acne Face Wash – 80ml",
+    "size": "80ml",
+    "ingredients": "2% Salicylic Acid, 2% Niacinamide",
+    "price": 249,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 17,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "2% Sali-Cinamide Anti-Acne Face Wash – 150ml",
+    "size": "150ml",
+    "ingredients": "2% Salicylic Acid, 2% Niacinamide",
+    "price": 368,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 18,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "1% Kojic Acid Face Wash – 100ml",
+    "size": "100ml",
+    "ingredients": "1% Kojic Acid, Niacinamide, Alpha Arbutin",
+    "price": 299,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 19,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "Oil-Free Daily Face Wash – 100ml",
+    "size": "100ml",
+    "ingredients": "Hyaluronic Acid, Glycolic Acid, Multivitamins",
+    "price": 275,
+    "currency": "INR",
+    "concerns": [
+      "Exfoliation & Anti-Aging",
+      "Dryness & Hydration",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 20,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "2% Salicylic Acid Gel Face Wash – 100ml",
+    "size": "100ml",
+    "ingredients": "Salicylic Acid, Witch Hazel",
+    "price": 299,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 21,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "2% Cica-Glow Daily Face Wash – 100ml",
+    "size": "100ml",
+    "ingredients": "Tranexamic Acid, Licorice Extract",
+    "price": 349,
+    "currency": "INR",
+    "concerns": [
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 22,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "2% Vitamin C Gel Daily Face Wash – 80ml",
+    "size": "80ml",
+    "ingredients": "Vitamin C, Rosehip, Orange Peel Extract",
+    "price": 249,
+    "currency": "INR",
+    "concerns": [
+      "Exfoliation & Anti-Aging",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 23,
+    "brand": "The Derma Co",
+    "category": "Face Wash",
+    "name": "Pore Minimizing Clay Daily Face Wash – 100ml",
+    "size": "100ml",
+    "ingredients": "1% Niacinamide, 2% PHA",
+    "price": 349,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 24,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "1% Salicylic Acid Oil-Free Moisturizer – 50g",
+    "size": "50g",
+    "ingredients": "1% Salicylic Acid, Oat Extract",
+    "price": 314,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Dryness & Hydration",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 25,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "5% Vitamin C Oil-Free Moisturizer – 100g",
+    "size": "100g",
+    "ingredients": "5% Vitamin C",
+    "price": 314,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration",
+      "Oil & Pore Control",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 26,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "Oil-Free Daily Face Moisturizer – 100g",
+    "size": "100g",
+    "ingredients": "Hyaluronic Acid, Ceramides, Multivitamins",
+    "price": 314,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 27,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "5% Nia-Ceramide Daily Hydrating Moisturizer – 100g",
+    "size": "100g",
+    "ingredients": "5% Niacinamide, 2% Ceramide",
+    "price": 404,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 28,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "5% Cica-Glow Daily Face Moisturizer – 50g",
+    "size": "50g",
+    "ingredients": "Alpha Arbutin, Tranexamic Acid",
+    "price": 314,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration",
+      "Oil & Pore Control",
+      "Pigmentation & Dark Spots"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 29,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "Pore Minimizing Daily Face Moisturizer – 50g",
+    "size": "50g",
+    "ingredients": "3% Niacinamide, 3% PHA, p-REFINYL®",
+    "price": 314,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 30,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "4% Ceramide Barrier Repair Moisturizer – 100g",
+    "size": "100g",
+    "ingredients": "Ceramide, Niacinamide, Oxylance",
+    "price": 359,
+    "currency": "INR",
+    "concerns": [
+      "Damage Repair & Strengthening",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 31,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "5% Nia-Ceramide Deep Moisturizing Cream – 100g",
+    "size": "100g",
+    "ingredients": "5% Niacinamide, 1% Ceramide",
+    "price": 404,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 32,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "Ceramide + HA Intense Daily Moisturizer – 50g",
+    "size": "50g",
+    "ingredients": "Ceramide, Hyaluronic Acid",
+    "price": 314,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 33,
+    "brand": "The Derma Co",
+    "category": "Moisturizers",
+    "name": "5% Nia-Ceramide Intense Moisturizing Cream – 100g",
+    "size": "100g",
+    "ingredients": "5% Niacinamide, Ceramide",
+    "price": 395,
+    "currency": "INR",
+    "concerns": [
+      "Dryness & Hydration"
+    ],
+    "target_type": "Skincare"
+  },
+  {
+    "id": 34,
+    "brand": "Bare Anatomy",
+    "category": "Hair Serums",
+    "name": "Advanced Hair Growth Serum – 30ml",
+    "size": "30ml",
+    "ingredients": "3% Redensyl, 4% Anagain, 3% Baicapil, 1% Capilia Longa",
+    "price": 807,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 35,
+    "brand": "Bare Anatomy",
+    "category": "Hair Serums",
+    "name": "Advanced Anti-Dandruff Serum – 50ml",
+    "size": "50ml",
+    "ingredients": "Salicylic Acid, Pentavitin",
+    "price": 549,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Dandruff & Scalp Care"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 36,
+    "brand": "Bare Anatomy",
+    "category": "Hair Serums",
+    "name": "Ultra Smoothing Hair Serum – 100ml",
+    "size": "100ml",
+    "ingredients": "Vitamin E, Omega 3-6-9",
+    "price": 427,
+    "currency": "INR",
+    "concerns": [
+      "Frizz & Smoothness"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 37,
+    "brand": "Bare Anatomy",
+    "category": "Hair Serums",
+    "name": "Advanced Hair Growth Serum Roll-On – 25ml",
+    "size": "25ml",
+    "ingredients": "Redensyl, Rosemary, Rice Water",
+    "price": 649,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 38,
+    "brand": "Bare Anatomy",
+    "category": "Hair Serums",
+    "name": "Damage Repair Hair Serum – 100ml",
+    "size": "100ml",
+    "ingredients": "Ceramide A2, Coconut Milk Protein",
+    "price": 451,
+    "currency": "INR",
+    "concerns": [
+      "Damage Repair & Strengthening",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 39,
+    "brand": "Bare Anatomy",
+    "category": "Hair Serums",
+    "name": "Advanced Anti-Grey Hair Serum – 50ml",
+    "size": "50ml",
+    "ingredients": "Silverfree Peptide, Rosemary, Biotin",
+    "price": 675,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 40,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Anti-Dandruff Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Salicylic Acid, Piroctone Olamine, Biotin",
+    "price": 460,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Dandruff & Scalp Care"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 41,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Anti-Hair Fall Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Adenosine, Peptides",
+    "price": 460,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 42,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Ultra Smoothing Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Niacinamide, Aloe Vera Extract",
+    "price": 503,
+    "currency": "INR",
+    "concerns": [
+      "Frizz & Smoothness"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 43,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Junior Gentle Cleansing Kids Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Tear-free, pH 5.5 formula (1–12 yrs)",
+    "price": 337,
+    "currency": "INR",
+    "concerns": [
+      "Kids Care"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 44,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Volumizing Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Strengthening complex for thin hair",
+    "price": 424,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth",
+      "Volume & Thin Hair"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 45,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Oil Control Shampoo – 236ml",
+    "size": "236ml",
+    "ingredients": "Salicylic Acid, Hyaluronic Acid, Tea Tree",
+    "price": 444,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Dryness & Hydration",
+      "Oil & Pore Control"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 46,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Damage Repair Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "10X strengthening complex",
+    "price": 440,
+    "currency": "INR",
+    "concerns": [
+      "Damage Repair & Strengthening",
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 47,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Anti-Frizz Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Rice Protein, Hyaluronic Acid",
+    "price": 503,
+    "currency": "INR",
+    "concerns": [
+      "Frizz & Smoothness",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 48,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Curl Defining Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Curl-retention hydrating complex",
+    "price": 422,
+    "currency": "INR",
+    "concerns": [
+      "Curl Care & Styling",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 49,
+    "brand": "Bare Anatomy",
+    "category": "Shampoos",
+    "name": "Color Protect Shampoo – 250ml",
+    "size": "250ml",
+    "ingredients": "Color-retaining, sulphate-free",
+    "price": 503,
+    "currency": "INR",
+    "concerns": [
+      "Oil & Pore Control",
+      "Color Protection"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 50,
+    "brand": "Bare Anatomy",
+    "category": "Conditioners & Oils",
+    "name": "Anti-Hair Fall Conditioner – 175gm",
+    "size": "175gm",
+    "ingredients": "Redensyl, Rosemary, Peptides",
+    "price": 382,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 51,
+    "brand": "Bare Anatomy",
+    "category": "Conditioners & Oils",
+    "name": "Anti-Dandruff Hair Conditioner – 175gm",
+    "size": "175gm",
+    "ingredients": "Salicylic Acid, Biotin, Rosemary",
+    "price": 382,
+    "currency": "INR",
+    "concerns": [
+      "Acne & Blemishes",
+      "Hair Fall & Growth",
+      "Dandruff & Scalp Care"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 52,
+    "brand": "Bare Anatomy",
+    "category": "Conditioners & Oils",
+    "name": "Rosemary & Hibiscus Hair Growth Oil – 100ml",
+    "size": "100ml",
+    "ingredients": "Redensyl, Biotin, Rosemary, Hibiscus",
+    "price": 253,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 53,
+    "brand": "Bare Anatomy",
+    "category": "Conditioners & Oils",
+    "name": "100% Pure Rosemary Essential Oil – 15ml",
+    "size": "15ml",
+    "ingredients": "Steam-distilled Rosemary Oil",
+    "price": 337,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 54,
+    "brand": "Bare Anatomy",
+    "category": "Hair Masks",
+    "name": "Curl Enhancing Hair Mask – 250gm",
+    "size": "250gm",
+    "ingredients": "Coconut Oil, Hyaluronic Acid, Shea Butter",
+    "price": 565,
+    "currency": "INR",
+    "concerns": [
+      "Curl Care & Styling",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 55,
+    "brand": "Bare Anatomy",
+    "category": "Hair Masks",
+    "name": "Anti-Frizz Hair Mask – 250gm",
+    "size": "250gm",
+    "ingredients": "Hyaluronic Acid",
+    "price": 708,
+    "currency": "INR",
+    "concerns": [
+      "Frizz & Smoothness",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 56,
+    "brand": "Bare Anatomy",
+    "category": "Hair Masks",
+    "name": "Volumizing Hair Mask – 250gm",
+    "size": "250gm",
+    "ingredients": "Volumizing complex",
+    "price": 708,
+    "currency": "INR",
+    "concerns": [
+      "Volume & Thin Hair"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 57,
+    "brand": "Bare Anatomy",
+    "category": "Hair Masks",
+    "name": "Damage Repair Hair Mask – 250gm",
+    "size": "250gm",
+    "ingredients": "Ceramide A2, Coconut Milk Protein",
+    "price": 708,
+    "currency": "INR",
+    "concerns": [
+      "Damage Repair & Strengthening",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 58,
+    "brand": "Bare Anatomy",
+    "category": "Hair Masks",
+    "name": "Color Protect Hair Mask – 250gm",
+    "size": "250gm",
+    "ingredients": "Color-retaining nourishment complex",
+    "price": 708,
+    "currency": "INR",
+    "concerns": [
+      "Color Protection"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 59,
+    "brand": "Bare Anatomy",
+    "category": "Hair Masks",
+    "name": "Ultra Smoothing Hair Mask – 250gm",
+    "size": "250gm",
+    "ingredients": "Shea Butter, Niacinamide",
+    "price": 596,
+    "currency": "INR",
+    "concerns": [
+      "Frizz & Smoothness"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 60,
+    "brand": "Bare Anatomy",
+    "category": "Leave-In & Styling",
+    "name": "Anti-Frizz Leave-In Conditioner – 150ml",
+    "size": "150ml",
+    "ingredients": "Argan Oil, Hyaluronic Acid",
+    "price": 521,
+    "currency": "INR",
+    "concerns": [
+      "Frizz & Smoothness",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 61,
+    "brand": "Bare Anatomy",
+    "category": "Leave-In & Styling",
+    "name": "Curl Intensifying Leave-In Conditioner – 140ml",
+    "size": "140ml",
+    "ingredients": "Curl-retention hydrating complex",
+    "price": 360,
+    "currency": "INR",
+    "concerns": [
+      "Curl Care & Styling",
+      "Dryness & Hydration"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 62,
+    "brand": "Bare Anatomy",
+    "category": "Leave-In & Styling",
+    "name": "Curl Defining Gel – 140ml",
+    "size": "140ml",
+    "ingredients": "Curl-hold complex",
+    "price": 382,
+    "currency": "INR",
+    "concerns": [
+      "Curl Care & Styling"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 63,
+    "brand": "Bare Anatomy",
+    "category": "Hair Sprays",
+    "name": "Rosemary & Rice Water Hair Growth Spray – 200ml",
+    "size": "200ml",
+    "ingredients": "Rosemary Extract, Rice Water",
+    "price": 379,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 64,
+    "brand": "Bare Anatomy",
+    "category": "Hair Sprays",
+    "name": "Heat Protection Hair Spray – 150ml",
+    "size": "150ml",
+    "ingredients": "Pea Protein, Vitamin E — 230°C protection",
+    "price": 440,
+    "currency": "INR",
+    "concerns": [
+      "Sun Protection",
+      "Color Protection"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 65,
+    "brand": "Bare Anatomy",
+    "category": "Hair Sprays",
+    "name": "Neem & Lemon Dandruff Control Scalp Spray – 200ml",
+    "size": "200ml",
+    "ingredients": "Neem, Lemon, Tea Tree Extract",
+    "price": 359,
+    "currency": "INR",
+    "concerns": [
+      "Dandruff & Scalp Care"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 66,
+    "brand": "Bare Anatomy",
+    "category": "Hair Sprays",
+    "name": "Fenugreek & Curry Leaves Strengthening Spray – 200ml",
+    "size": "200ml",
+    "ingredients": "Fenugreek, Curry Leaves, Amla, Aloe Vera",
+    "price": 359,
+    "currency": "INR",
+    "concerns": [
+      "Hair Fall & Growth"
+    ],
+    "target_type": "Haircare"
+  },
+  {
+    "id": 67,
+    "brand": "Bare Anatomy",
+    "category": "Hair Sprays",
+    "name": "Root Lift & Volume Spray – 135ml",
+    "size": "135ml",
+    "ingredients": "Rice Milk Peptides",
+    "price": 599,
+    "currency": "INR",
+    "concerns": [
+      "Volume & Thin Hair"
+    ],
+    "target_type": "Haircare"
+  }
+]
