@@ -22,42 +22,54 @@ def main():
     print("   Flask server is running on http://localhost:5000", flush=True)
 
     print("\n2. Opening public secure HTTPS tunnel...", flush=True)
-    tunnel_process = subprocess.Popen(
-        ["ssh", "-o", "StrictHostKeyChecking=no", "-R", "80:localhost:5000", "nokey@localhost.run"],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        encoding='utf-8',
-        errors='replace',
-        bufsize=1
-    )
+    tunnel_process = None
+    try:
+        tunnel_process = subprocess.Popen(
+            ["ssh", "-o", "StrictHostKeyChecking=no", "-R", "80:localhost:5000", "nokey@localhost.run"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            encoding='utf-8',
+            errors='replace',
+            bufsize=1
+        )
+    except FileNotFoundError:
+        print("\n❌ Error: 'ssh' client not found in system PATH.")
+        print("   Please install OpenSSH client or use http://localhost:5000 directly.")
+        flask_process.terminate()
+        return
 
     found_url = False
     try:
-        for line in iter(tunnel_process.stdout.readline, ''):
-            if not line:
-                break
-            line_str = line.strip()
-            print("   " + line_str, flush=True)
-            if "https://" in line_str and not found_url and ("lhr.life" in line_str or "tunneled" in line_str):
-                match = re.search(r'https://[a-zA-Z0-9.-]+\.lhr\.life', line_str)
-                if match:
-                    found_url = True
-                    public_url = match.group(0)
-                    print("\n" + "==========================================================", flush=True)
-                    print("  🎉 YOUR SHAREABLE CHATBOT LINK IS LIVE!", flush=True)
-                    print(f"  👉 {public_url}", flush=True)
-                    print("==========================================================", flush=True)
-                    print("\nSend this HTTPS link to your friend on WhatsApp, email, or SMS.", flush=True)
-                    print("NOTE: Keep this terminal window open while your friend is using the app.", flush=True)
-                    print("Press Ctrl+C anytime to stop sharing.\n", flush=True)
+        if tunnel_process and tunnel_process.stdout:
+            for line in iter(tunnel_process.stdout.readline, ''):
+                if not line:
+                    break
+                line_str = line.strip()
+                print("   " + line_str, flush=True)
+                if "https://" in line_str and not found_url and ("lhr.life" in line_str or "tunneled" in line_str):
+                    match = re.search(r'https://[a-zA-Z0-9.-]+\.lhr\.life', line_str)
+                    if match:
+                        found_url = True
+                        public_url = match.group(0)
+                        print("\n" + "==========================================================", flush=True)
+                        print("  🎉 YOUR SHAREABLE CHATBOT LINK IS LIVE!", flush=True)
+                        print(f"  👉 {public_url}", flush=True)
+                        print("==========================================================", flush=True)
+                        print("\nSend this HTTPS link to your friend on WhatsApp, email, or SMS.", flush=True)
+                        print("NOTE: Keep this terminal window open while your friend is using the app.", flush=True)
+                        print("Press Ctrl+C anytime to stop sharing.\n", flush=True)
         
-        tunnel_process.wait()
+        if tunnel_process:
+            tunnel_process.wait()
     except KeyboardInterrupt:
         print("\nStopping server & closing tunnel...", flush=True)
     finally:
-        tunnel_process.terminate()
-        flask_process.terminate()
+        if tunnel_process and tunnel_process.poll() is None:
+            tunnel_process.terminate()
+        if flask_process and flask_process.poll() is None:
+            flask_process.terminate()
+
 
 if __name__ == "__main__":
     main()

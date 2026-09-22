@@ -1,17 +1,23 @@
 import os
+import sys
 import json
 import requests
 from pathlib import Path
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 
+# Fix Windows console UTF-8 encoding issues for print logs
+if sys.platform == "win32":
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    if hasattr(sys.stderr, 'reconfigure'):
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 # Load environment variables
 env_path = Path(__file__).parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 MODEL_NAME = "gemini-3.6-flash"
-GEMINI_ENDPOINT = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
 
 app = Flask(__name__)
 
@@ -30,7 +36,8 @@ def build_system_prompt():
 Here is the exact official product catalog data you have access to:
 """
     for p in products_data:
-        prompt += f"- ID {p['id']}: [{p['brand']}] {p['name']} ({p['size']}) - Price: ₹{p['price']} | Category: {p['category']} | Target: {p['target_type']} | Ingredients: {p['ingredients']} | Concerns: {', '.join(p.get('concerns', []))}\n"
+        concerns_str = ', '.join(p.get('concerns') or [])
+        prompt += f"- ID {p['id']}: [{p['brand']}] {p['name']} ({p['size']}) - Price: ₹{p['price']} | Category: {p['category']} | Target: {p['target_type']} | Ingredients: {p['ingredients']} | Concerns: {concerns_str}\n"
 
     prompt += """
 GUIDELINES FOR YOUR RESPONSES:
@@ -57,24 +64,29 @@ def get_products():
     concern = request.args.get("concern", "").strip()
     target_type = request.args.get("target_type", "").strip()
     search = request.args.get("search", "").strip().lower()
-    max_price = request.args.get("max_price", type=float)
+    
+    try:
+        max_price = request.args.get("max_price", type=float)
+    except (ValueError, TypeError):
+        max_price = None
 
     filtered = []
     for p in products_data:
-        if brand and brand.lower() != "all" and p["brand"].lower() != brand.lower():
+        if brand and brand.lower() != "all" and p.get("brand", "").lower() != brand.lower():
             continue
-        if category and category.lower() != "all" and p["category"].lower() != category.lower():
+        if category and category.lower() != "all" and p.get("category", "").lower() != category.lower():
             continue
-        if target_type and target_type.lower() != "all" and p["target_type"].lower() != target_type.lower():
+        if target_type and target_type.lower() != "all" and p.get("target_type", "").lower() != target_type.lower():
             continue
         if concern and concern.lower() != "all":
-            concerns_lower = [c.lower() for c in p.get("concerns", [])]
+            concerns_lower = [c.lower() for c in (p.get("concerns") or [])]
             if not any(concern.lower() in c for c in concerns_lower):
                 continue
-        if max_price and p["price"] > max_price:
+        if max_price is not None and p.get("price", 0) > max_price:
             continue
         if search:
-            match_text = (p["name"] + " " + p["brand"] + " " + p["ingredients"] + " " + p["category"] + " " + " ".join(p.get("concerns", []))).lower()
+            concerns_text = " ".join(p.get("concerns") or [])
+            match_text = f"{p.get('name', '')} {p.get('brand', '')} {p.get('ingredients', '')} {p.get('category', '')} {concerns_text}".lower()
             if search not in match_text:
                 continue
         filtered.append(p)
@@ -90,19 +102,10 @@ def chat():
     if not user_message:
         return jsonify({"status": "error", "message": "Message content cannot be empty."}), 400
 
-    # Build Gemini request payload
+    api_key = os.getenv("GEMINI_API_KEY")
+    
+    # Build Gemini request payload using systemInstruction
     contents = []
-    # Add system context as first message turn
-    contents.append({
-        "role": "user",
-        "parts": [{"text": f"System Context & Instructions:\n{SYSTEM_PROMPT}\n\nAcknowledge instructions."}]
-    })
-    contents.append({
-        "role": "model",
-        "parts": [{"text": "Understood. I am Derma & Bare AI consultant ready to assist users with personalized skincare and haircare routines using The Derma Co and Bare Anatomy catalog."}]
-    })
-
-    # Add past chat history (up to last 10 messages)
     for msg in history[-10:]:
         role = "user" if msg.get("sender") == "user" else "model"
         text = msg.get("text", "")
@@ -112,13 +115,15 @@ def chat():
                 "parts": [{"text": text}]
             })
 
-    # Add current user message
     contents.append({
         "role": "user",
         "parts": [{"text": user_message}]
     })
 
     payload = {
+        "systemInstruction": {
+            "parts": [{"text": SYSTEM_PROMPT}]
+        },
         "contents": contents,
         "generationConfig": {
             "temperature": 0.7,
@@ -127,20 +132,25 @@ def chat():
     }
 
     try:
-        if not GEMINI_API_KEY:
-            raise ValueError("GEMINI_API_KEY is missing.")
+        if not api_key:
+            raise ValueError("GEMINI_API_KEY environment variable is not set.")
 
-        resp = requests.post(GEMINI_ENDPOINT, json=payload, timeout=20)
+        endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={api_key}"
+        resp = requests.post(endpoint, json=payload, timeout=25)
+        
         if resp.status_code == 200:
             res_data = resp.json()
-            try:
-                reply_text = res_data["candidates"][0]["content"]["parts"][0]["text"]
-                return jsonify({"status": "success", "reply": reply_text})
-            except (KeyError, IndexError):
-                pass
+            candidates = res_data.get("candidates", [])
+            if candidates:
+                parts = candidates[0].get("content", {}).get("parts", [])
+                texts = [pt.get("text", "") for pt in parts if isinstance(pt, dict) and pt.get("text")]
+                if texts:
+                    reply_text = "\n".join(texts).strip()
+                    if reply_text:
+                        return jsonify({"status": "success", "reply": reply_text})
         
         # Fallback response if API responds with non-200 or unexpected structure
-        print(f"Gemini API returned status {resp.status_code}: {resp.text}")
+        print(f"Gemini API status {resp.status_code}: {resp.text[:300]}")
         reply_text = generate_smart_fallback(user_message)
         return jsonify({"status": "success", "reply": reply_text, "fallback": True})
 
@@ -154,7 +164,8 @@ def generate_smart_fallback(query):
     q = query.lower()
     matched_prods = []
     for p in products_data:
-        text = (p["name"] + " " + p["brand"] + " " + p["ingredients"] + " " + " ".join(p.get("concerns", []))).lower()
+        concerns_str = " ".join(p.get("concerns") or [])
+        text = f"{p.get('name', '')} {p.get('brand', '')} {p.get('ingredients', '')} {concerns_str}".lower()
         if any(term in text for term in q.split() if len(term) > 3):
             matched_prods.append(p)
             if len(matched_prods) >= 4:
@@ -165,10 +176,11 @@ def generate_smart_fallback(query):
 
     reply = f"Here are top recommendations from **Derma & Bare** catalog tailored for your query:\n\n"
     for p in matched_prods:
-        reply += f"• **{p['brand']} - {p['name']}** ({p['size']})\n"
-        reply += f"  - **Price**: ₹{p['price']}\n"
-        reply += f"  - **Key Ingredients**: {p['ingredients']}\n"
-        reply += f"  - **Best For**: {', '.join(p.get('concerns', []))}\n\n"
+        concerns_fmt = ', '.join(p.get('concerns') or [])
+        reply += f"• **{p.get('brand')} - {p.get('name')}** ({p.get('size')})\n"
+        reply += f"  - **Price**: ₹{p.get('price')}\n"
+        reply += f"  - **Key Ingredients**: {p.get('ingredients')}\n"
+        reply += f"  - **Best For**: {concerns_fmt}\n\n"
     
     reply += "💡 *Tip: Check out the Product Explorer tab to filter the complete catalog by skin/hair concern!*"
     return reply
@@ -176,21 +188,25 @@ def generate_smart_fallback(query):
 @app.route("/api/recommend", methods=["POST"])
 def recommend():
     data = request.json or {}
-    care_type = data.get("care_type", "both") # skincare, haircare, both
+    care_type = data.get("care_type", "both")
     concerns = data.get("concerns", [])
-    max_budget = data.get("budget", 2000)
+    
+    try:
+        max_budget = float(data.get("budget", 2000))
+    except (ValueError, TypeError):
+        max_budget = 2000.0
 
     recommended = []
     for p in products_data:
-        if care_type == "skincare" and p["target_type"] != "Skincare":
+        if care_type == "skincare" and p.get("target_type") != "Skincare":
             continue
-        if care_type == "haircare" and p["target_type"] != "Haircare":
+        if care_type == "haircare" and p.get("target_type") != "Haircare":
             continue
-        if p["price"] > max_budget:
+        if p.get("price", 0) > max_budget:
             continue
         
         # Check concern match
-        p_concerns = [c.lower() for c in p.get("concerns", [])]
+        p_concerns = [c.lower() for c in (p.get("concerns") or [])]
         if not concerns or any(c.lower() in " ".join(p_concerns) for c in concerns):
             recommended.append(p)
 
@@ -204,3 +220,4 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     print(f"Starting Derma n Bare AI Chatbot Server on http://localhost:{port} ...")
     app.run(host="0.0.0.0", port=port, debug=True)
+

@@ -152,8 +152,12 @@ def parse_catalog():
 
 if __name__ == "__main__":
     os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
-    catalog = parse_catalog()
-    print(f"Extracted {len(catalog)} products.")
-    with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
-        json.dump(catalog, f, indent=2, ensure_ascii=False)
-    print(f"Saved catalog to {OUTPUT_JSON}")
+    if not os.path.exists(PPTX_PATH):
+        print(f"Warning: PPTX file not found at '{PPTX_PATH}'. Skipping catalog extraction.")
+    else:
+        catalog = parse_catalog()
+        print(f"Extracted {len(catalog)} products.")
+        with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+            json.dump(catalog, f, indent=2, ensure_ascii=False)
+        print(f"Saved catalog to {OUTPUT_JSON}")
+

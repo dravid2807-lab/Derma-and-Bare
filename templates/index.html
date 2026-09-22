@@ -53,6 +53,10 @@
             </nav>
 
             <div class="header-actions">
+                <button class="share-header-btn" id="open-share-modal-btn" title="Share with friends anywhere">
+                    <i data-lucide="share-2"></i>
+                    <span>Share App</span>
+                </button>
                 <div class="status-indicator" title="Connected to Gemini 3.6 Flash AI">
                     <span class="status-dot"></span>
                     <span class="status-text">Gemini 3.6 Active</span>
@@ -393,6 +397,64 @@
             </div>
         </div>
     </footer>
+
+    <!-- Share App Modal -->
+    <div class="modal-backdrop hidden" id="share-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <i data-lucide="share-2" class="modal-icon"></i>
+                    <div>
+                        <h3>Share Derma &amp; Bare AI</h3>
+                        <p>Let your friends try the AI Skincare &amp; Haircare Consultant from anywhere!</p>
+                    </div>
+                </div>
+                <button class="modal-close-btn" id="close-share-modal-btn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- QR Code & Quick Scan -->
+                <div class="share-qr-box">
+                    <img id="share-qr-img" src="" alt="Scan QR Code to Open Web App" class="qr-code-img">
+                    <p><i data-lucide="qr-code"></i> Scan with any smartphone camera to open instantly</p>
+                </div>
+
+                <!-- Link Share Row -->
+                <div class="share-link-group">
+                    <label for="share-link-input"><i data-lucide="link"></i> Live Shareable Website URL:</label>
+                    <div class="input-copy-wrapper">
+                        <input type="text" id="share-link-input" readonly value="">
+                        <button class="copy-btn" id="copy-share-link-btn">
+                            <i data-lucide="copy"></i> Copy Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons: WhatsApp & Direct Options -->
+                <div class="share-action-buttons">
+                    <a id="whatsapp-share-btn" href="#" target="_blank" class="share-btn whatsapp-btn">
+                        <i data-lucide="message-circle"></i> Share on WhatsApp
+                    </a>
+                    <button class="share-btn native-share-btn" id="native-share-btn">
+                        <i data-lucide="share"></i> Send via Device...
+                    </button>
+                </div>
+
+                <div class="share-info-card">
+                    <h4><i data-lucide="globe"></i> How to share with friends:</h4>
+                    <ul>
+                        <li><strong>Live Local Tunnel:</strong> Double click <code>share.bat</code> anytime to generate a live HTTPS link.</li>
+                        <li><strong>Free 24/7 Hosting:</strong> Deploy to Vercel or Render for permanent live URL.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Toast Notification -->
+    <div class="toast hidden" id="toast-notification">
+        <i data-lucide="check-circle"></i> <span id="toast-message">Link copied to clipboard!</span>
+    </div>
 
     <!-- App JS -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
